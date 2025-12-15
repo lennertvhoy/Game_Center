@@ -45,7 +45,7 @@ interface Vlan1
 ip default-gateway 192.168.10.1
 !
 ! 9. Interface & Trunk Configuratie
-! Uplink naar Router
+! Uplink naar Router (Gigabit op 2960)
 interface GigabitEthernet0/1
  description Uplink naar GC-Router
  switchport mode access
@@ -53,21 +53,22 @@ interface GigabitEthernet0/1
  no shutdown
  exit
 !
-! Downlinks naar Access Switches (Trunks)
-interface GigabitEthernet0/2
+! Downlinks naar Access Switches (Trunks via FastEthernet)
+interface FastEthernet0/1
  description Trunk naar Personeel-Kassa-SW
  switchport mode trunk
  no shutdown
  exit
 !
-interface GigabitEthernet0/3
+interface FastEthernet0/2
  description Trunk naar Personeel-Server-SW
  switchport mode trunk
  no shutdown
  exit
 !
 ! 10. Uitschakelen ongebruikte interfaces (Security)
-interface range FastEthernet0/1 - 24, GigabitEthernet0/4
+! 2960 heeft typisch 24 Fa en 2 Gi poorten
+interface range FastEthernet0/3 - 24, GigabitEthernet0/2
  shutdown
  description Unused Port
  exit

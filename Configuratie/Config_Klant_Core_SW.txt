@@ -1,0 +1,44 @@
+! Configuratiebestand voor Switch: Klant-Core-SW
+!
+enable
+configure terminal
+!
+! 1. Hostname instellen
+hostname Klant-Core-SW
+!
+! 2. Paswoord encryptie inschakelen
+service password-encryption
+!
+! 3. Paswoord console verbinding
+line console 0
+ password cisco
+ login
+ exit
+!
+! 4. Paswoord remote verbindingen (VTY)
+line vty 0 15
+ password cisco
+ login
+ exit
+!
+! 5. Paswoord privileged EXEC (Enable)
+enable secret class
+!
+! 6. Banner MotD
+banner motd ^Toegang enkel voor bevoegd personeel!^
+!
+! 7. Management IP Configuratie
+interface Vlan1
+ description Management Interface
+ ip address 192.168.20.2 255.255.255.0
+ no shutdown
+ exit
+!
+! 8. Default Gateway (voor remote beheer vanuit ander subnet)
+ip default-gateway 192.168.20.1
+!
+! Opslaan
+end
+write memory
+!
+! Klaar!

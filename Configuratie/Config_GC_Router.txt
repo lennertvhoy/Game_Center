@@ -1,0 +1,50 @@
+! Configuratiebestand voor Router: GC-Router
+!
+enable
+configure terminal
+!
+! 1. Hostname instellen
+hostname GC-Router
+!
+! 2. Paswoord encryptie inschakelen
+service password-encryption
+!
+! 3. Paswoord console verbinding
+line console 0
+ password cisco
+ login
+ exit
+!
+! 4. Paswoord remote verbindingen (VTY)
+line vty 0 15
+ password cisco
+ login
+ exit
+!
+! 5. Paswoord user EXEC laag (optioneel als console/vty login aan staat, maar hier enable secret)
+! 6. Paswoord privileged EXEC (Enable) - Geëncrypteerd
+enable secret class
+!
+! 7. Banner MotD (Message of the Day)
+banner motd ^Toegang enkel voor bevoegd personeel!^
+!
+! 8. Interface Configuratie (IP Adressen)
+! Interface naar Personeelsnetwerk
+interface GigabitEthernet0/0
+ description Link naar Personeel Netwerk
+ ip address 192.168.10.1 255.255.255.0
+ no shutdown
+ exit
+!
+! Interface naar Klantennetwerk
+interface GigabitEthernet0/1
+ description Link naar Klanten Netwerk
+ ip address 192.168.20.1 255.255.255.0
+ no shutdown
+ exit
+!
+! Opslaan naar startup-config
+end
+write memory
+!
+! Klaar!

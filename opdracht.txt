@@ -1,0 +1,71 @@
+we gaan een omgeving opbouwen in groepjes (uitleg in volgende onderdeel)
+
+we gaan een simpel netwerkje opzetten met in gedachten een kleine game center
+
+het bestaat uit twee grote delen:
+
+    personeels kant met ook onderdelen:
+        kassasysteem en beheersysteem voor medewerkers (1 switch)
+        servers (1 switch)
+        een connectie tussen de twee delen (1 switch)
+    Klantenkant met ook onderdelen:
+        arcade kasten (1 switch)
+        gaming PC's en VR PC's (1 switch)
+        een connectie tussen de twee delen (1 switch)
+verdeel jullie in 6 groepen
+
+zorg dat er tweemaal 3 groepen zijn die samen 1 IP-range afspreken om hetzelfde te gebruiken
+
+spreek ook af met de andere 3 groepen dat die twee ranges niet overlappend zijn
+
+zorg dat er globaal voor de management IP's van de switches geen dubbele voorkomen
+
+neem elk een Switch en stel de basis configuratie in:
+
+    Hostname
+    Paswoord user EXEC laag
+    Paswoord console verbinding
+    Paswoord remote verbindingen
+    Paswoord encryptie
+    Sla de running config op naar de startup config
+    Een MotD *
+    Remote management IP
+
+
+*device(config)# banner motd ^plaats een tekst hier^ 
+de 3 groepen die hetzelfde subnet hebben gaan nu samen zitten als 1 groep
+
+nu zijn er zo 2 grote groepen met elk hun eigen subnet
+
+connecteer de switches als volgt:
+
+
+
+sluit je klas toestellen hierop aan en pas je IP-instelling aan zodat deze een geldige IP hebben in het subnet dat je gekozen hebt voor de switches.
+
+    Test of je naar elkaar kan pingen!
+
+    de twee switch omgevingen kunnen nu verbonden worden met elkaar via een router
+
+spreek gateway adressen af, mooie uniformiteit a.u.b.!
+
+connecteer deze als volgt:
+
+
+
+zorg dat de router volgende instellingen heeft:
+
+    Hostname
+    Paswoord user EXEC laag
+    paswoord console verbinding
+    Paswoord remote verbindingen
+    Paswoord encryptie
+    Sla de running config op naar de startup config
+    een MotD
+    De nodige interfaces hebben een correcte IP
+
+zie ook na welke poorten op de netwerk devices ZEKER gesloten kunnen worden, bespreek je bevinding met de docent voordat je deze implementeert
+
+Dwight-pepper-spray GIFs - Find & Share on GIPHY
+
+    Test of je naar elkaar kan pingen!

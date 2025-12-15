@@ -6,18 +6,25 @@ configure terminal
 ! 1. Hostname instellen
 hostname Klant-Arcade-SW
 !
-! 2. Paswoord encryptie inschakelen
+! 2. Paswoord encryptie & Security Basics
 service password-encryption
+no ip domain-lookup
+ip domain-name gamecenter.local
 !
 ! 3. Paswoord console verbinding
 line console 0
  password cisco
+ logging synchronous
  login
  exit
 !
-! 4. Paswoord remote verbindingen (VTY)
+! 4. SSH & Remote verbindingen (VTY) configuratie
+! Genereer crypto keys (vereist voor SSH):
+! crypto key generate rsa modulus 2048
+!
 line vty 0 15
  password cisco
+ transport input ssh
  login
  exit
 !
@@ -36,6 +43,25 @@ interface Vlan1
 !
 ! 8. Default Gateway
 ip default-gateway 192.168.20.1
+!
+! 9. Interface Configuratie
+! Uplink naar Core Switch (Trunk)
+interface GigabitEthernet0/1
+ description Uplink naar Klant-Core-SW
+ switchport mode trunk
+ no shutdown
+ exit
+!
+! 10. Uitschakelen ongebruikte interfaces
+interface range GigabitEthernet0/2 - 4
+ shutdown
+ description Unused Uplink
+ exit
+!
+interface range FastEthernet0/1 - 24
+ shutdown
+ description Arcade Port (Enable when needed)
+ exit
 !
 ! Opslaan
 end

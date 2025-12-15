@@ -6,41 +6,52 @@ configure terminal
 ! 1. Hostname instellen
 hostname GC-Router
 !
-! 2. Paswoord encryptie inschakelen
+! 2. Paswoord encryptie & Security Basics
 service password-encryption
+no ip domain-lookup
+ip domain-name gamecenter.local
 !
 ! 3. Paswoord console verbinding
 line console 0
  password cisco
+ logging synchronous
  login
  exit
 !
-! 4. Paswoord remote verbindingen (VTY)
+! 4. SSH & Remote verbindingen (VTY) configuratie
+! Genereer crypto keys (vereist voor SSH - eenmalig uit te voeren):
+! crypto key generate rsa modulus 2048
+!
 line vty 0 15
  password cisco
+ transport input ssh
  login
  exit
 !
-! 5. Paswoord user EXEC laag (optioneel als console/vty login aan staat, maar hier enable secret)
-! 6. Paswoord privileged EXEC (Enable) - Geëncrypteerd
+! 5. Paswoord privileged EXEC (Enable)
 enable secret class
 !
-! 7. Banner MotD (Message of the Day)
+! 6. Banner MotD
 banner motd ^Toegang enkel voor bevoegd personeel!^
 !
-! 8. Interface Configuratie (IP Adressen)
-! Interface naar Personeelsnetwerk
+! 7. Interface Configuratie
 interface GigabitEthernet0/0
- description Link naar Personeel Netwerk
+ description Link naar Personeel-Core-SW (VLAN 10)
  ip address 192.168.10.1 255.255.255.0
  no shutdown
  exit
 !
-! Interface naar Klantennetwerk
 interface GigabitEthernet0/1
- description Link naar Klanten Netwerk
+ description Link naar Klant-Core-SW (VLAN 20)
  ip address 192.168.20.1 255.255.255.0
  no shutdown
+ exit
+!
+! 8. Uitschakelen ongebruikte interfaces (Security)
+! Pas range aan indien router meer poorten heeft
+interface range GigabitEthernet0/2 - 3
+ shutdown
+ description Unused Port
  exit
 !
 ! Opslaan naar startup-config

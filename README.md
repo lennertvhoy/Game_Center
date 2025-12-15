@@ -1,4 +1,4 @@
-# Project Overzicht: Game Center Netwerk
+# README: Game Center Netwerk
 
 Dit document geeft een overzicht van de opgeleverde bestanden voor de netwerkopdracht.
 
@@ -12,6 +12,8 @@ Het project is ordelijk onderverdeeld in 2 mappen:
 ## 📄 Documentatie
 *   [Netwerk Ontwerp & IP Schema](Documentatie/Netwerk_Documentatie.md)
     *   *Bevat de topologie, IP-adressen tabel en VLAN informatie.*
+*   [Fysieke Verbindingen (Patching)](Documentatie/Verbindingen_Tabel.md)
+    *   *Tabel met kabelverbindingen tussen alle apparaten.*
 
 ## ⚙️ Configuratiebestanden
 

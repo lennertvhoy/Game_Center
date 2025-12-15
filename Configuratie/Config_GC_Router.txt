@@ -1,30 +1,23 @@
 ! Configuratiebestand voor Router: GC-Router
 !
-enable
-configure terminal
+en
+conf t
 !
 ! 1. Hostname instellen
 hostname GC-Router
 !
 ! 2. Paswoord encryptie & Security Basics
 service password-encryption
-no ip domain-lookup
-ip domain-name gamecenter.local
 !
 ! 3. Paswoord console verbinding
 line console 0
  password cisco
- logging synchronous
  login
  exit
 !
-! 4. SSH & Remote verbindingen (VTY) configuratie
-! Genereer crypto keys (vereist voor SSH - eenmalig uit te voeren):
-! crypto key generate rsa modulus 2048
-!
+! 4. Remote verbindingen (VTY)
 line vty 0 15
  password cisco
- transport input ssh
  login
  exit
 !
@@ -35,27 +28,18 @@ enable secret class
 banner motd ^Toegang enkel voor bevoegd personeel!^
 !
 ! 7. Interface Configuratie
-interface GigabitEthernet0/0
- description Link naar Personeel-Core-SW (VLAN 10)
+int Gi0/0
  ip address 192.168.10.1 255.255.255.0
- no shutdown
+ no shut
  exit
 !
-interface GigabitEthernet0/1
- description Link naar Klant-Core-SW (VLAN 20)
+int Gi0/1
  ip address 192.168.20.1 255.255.255.0
- no shutdown
- exit
-!
-! 8. Uitschakelen ongebruikte interfaces (Security)
-! Pas range aan indien router meer poorten heeft
-interface range GigabitEthernet0/2 - 3
- shutdown
- description Unused Port
+ no shut
  exit
 !
 ! Opslaan naar startup-config
 end
-write memory
+copy run start
 !
 ! Klaar!

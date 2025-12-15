@@ -1,30 +1,23 @@
 ! Configuratiebestand voor Switch: Personeel-Server-SW
 !
-enable
-configure terminal
+en
+conf t
 !
 ! 1. Hostname instellen
 hostname Personeel-Server-SW
 !
 ! 2. Paswoord encryptie & Security Basics
 service password-encryption
-no ip domain-lookup
-ip domain-name gamecenter.local
 !
 ! 3. Paswoord console verbinding
 line console 0
  password cisco
- logging synchronous
  login
  exit
 !
-! 4. SSH & Remote verbindingen (VTY) configuratie
-! Genereer crypto keys (vereist voor SSH):
-! crypto key generate rsa modulus 2048
-!
+! 4. Remote verbindingen (VTY)
 line vty 0 15
  password cisco
- transport input ssh
  login
  exit
 !
@@ -35,31 +28,21 @@ enable secret class
 banner motd ^Toegang enkel voor bevoegd personeel!^
 !
 ! 7. Management IP Configuratie
-interface Vlan1
- description Management Interface
+int Vlan1
  ip address 192.168.10.4 255.255.255.0
- no shutdown
+ no shut
  exit
 !
 ! 8. Default Gateway
 ip default-gateway 192.168.10.1
 !
-! 9. Interface Configuratie
-! Uplink naar Core Switch (Trunk via FastEthernet)
-interface FastEthernet0/1
- description Uplink naar Personeel-Core-SW
- switchport mode trunk
- no shutdown
- exit
-!
-! 10. Uitschakelen ongebruikte interfaces
-interface range FastEthernet0/2 - 24, GigabitEthernet0/1 - 2
- shutdown
- description Unused/Server Port
+! 9. Ongebruikte interfaces uitschakelen
+int range Fa0/2 - 24, Gi0/1 - 2
+ shut
  exit
 !
 ! Opslaan
 end
-write memory
+copy run start
 !
 ! Klaar!

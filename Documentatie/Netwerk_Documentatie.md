@@ -21,20 +21,20 @@ Het netwerk bestaat uit de volgende componenten:
 graph TD
     Router[GC-Router]
     
-    subgraph "Personeel (192.168.10.0/24)"
+    subgraph "Personeel"
         SW_P_Core[Personeel-Core-SW]
         SW_P_Kassa[Personeel-Kassa-SW]
         SW_P_Server[Personeel-Server-SW]
     end
     
-    subgraph "Klant (192.168.20.0/24)"
+    subgraph "Klant"
         SW_K_Core[Klant-Core-SW]
         SW_K_Arcade[Klant-Arcade-SW]
         SW_K_Gaming[Klant-Gaming-SW]
     end
 
-    Router -- G0/0 --> SW_P_Core
-    Router -- G0/1 --> SW_K_Core
+    Router --> SW_P_Core
+    Router --> SW_K_Core
     
     SW_P_Core --> SW_P_Kassa
     SW_P_Core --> SW_P_Server

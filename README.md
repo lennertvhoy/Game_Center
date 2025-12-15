@@ -20,12 +20,12 @@ Het project is ordelijk onderverdeeld in 2 mappen:
 ### Router
 *   [GC-Router](Configuratie/Config_GC_Router.txt) (Gateway voor beide netwerken)
 
-### Personeel (VLAN 10)
+### Personeel
 *   [Core Switch](Configuratie/Config_Personeel_Core_SW.txt)
 *   [Kassa Switch](Configuratie/Config_Personeel_Kassa_SW.txt)
 *   [Server Switch](Configuratie/Config_Personeel_Server_SW.txt)
 
-### Klant (VLAN 20)
+### Klant
 *   [Core Switch](Configuratie/Config_Klant_Core_SW.txt)
 *   [Arcade Switch](Configuratie/Config_Klant_Arcade_SW.txt)
 *   [Gaming Switch](Configuratie/Config_Klant_Gaming_SW.txt)

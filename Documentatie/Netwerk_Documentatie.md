@@ -7,11 +7,11 @@ Deze documentatie beschrijft het netwerkontwerp voor het nieuwe Game Center. Het
 Het netwerk bestaat uit de volgende componenten:
 
 *   **1 Central Router**: Verbindt de twee netwerksegmenten.
-*   **Personeelssegment (VLAN 10 - Management Default)**:
+*   **Personeelssegment**:
     *   1 Core Switch (Verbinding naar Router)
     *   1 Switch voor Kassasystemen & Beheer
     *   1 Switch voor Servers
-*   **Klantensegment (VLAN 20 - Management Default)**:
+*   **Klantensegment**:
     *   1 Core Switch (Verbinding naar Router)
     *   1 Switch voor Arcade kasten
     *   1 Switch voor Gaming/VR PC's
@@ -70,7 +70,7 @@ Volgens de opdracht moeten alle apparaten de volgende basisconfiguratie hebben:
 2.  **User EXEC Wachtwoord**: Beveiliging bij binnenkomst (bv: `cisco`).
 3.  **Privileged EXEC Wachtwoord (Enable)**: Beveiliging voor admin modus, geëncrypteerd (bv: `class`).
 4.  **Console Wachtwoord**: Fysieke toegang beveiliging.
-5.  **VTY (Remote) Wachtwoord**: Telnet/SSH toegang beveiliging.
+5.  **VTY (Remote) Wachtwoord**: Telnet toegang beveiliging.
 6.  **Service Password-Encryption**: Alle wachtwoorden onleesbaar maken in de config.
 7.  **Banner MOTD**: Welkomstbericht ("Alleen voor bevoegd personeel").
 8.  **Management IP**: Instellen van IP op VLAN interface (switches) of fysieke poort (router).

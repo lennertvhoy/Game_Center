@@ -1,10 +1,16 @@
 ---
 repo_mode: "bootstrap"
 initialized_on: 2026-04-26
-last_updated: "2026-06-14"
+last_updated: "2026-07-14"
 project: "Game_Center"
 ---
-# Game_Center StateDD Contract
+# Game_Center StateSpec Contract
+
+Public terminology uses **Stateware** for the category, **State-Centric
+Engineering** for the method, and **StateSpec** for the portable
+specification. Existing `StateDD` repository paths, package/script names,
+schema/version identifiers, license text, and historical records remain
+compatibility identifiers. See `docs/NAMING_AND_COMPATIBILITY.md`.
 
 **Purpose:** Stable operating contract for technical projects that use explicit state, evidence, and short active queues.
 
@@ -41,7 +47,7 @@ These rules apply in all modes:
 
 ## Human Override Rule — Strong Defaults, Not a Prison
 
-StateDD rules are mandatory defaults, but the human product owner may explicitly
+StateSpec rules are mandatory defaults, but the human product owner may explicitly
 override a workflow step. The agent must respect a clear human override unless
 the requested action is destructive, illegal, unsafe, unrecoverable, or would
 corrupt project truth.

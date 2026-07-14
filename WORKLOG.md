@@ -132,3 +132,20 @@
 - The SkillSignal-specific canonical schema/export/import loop is a downstream application of the new `SCHEMA_OWNERSHIP_TEMPLATE.md`, not implemented in this slice.
 - The Human Override Rule was added explicitly so the workflow stays a strong default, not a prison.
 - Subagent review feedback was integrated: fixed `.jpg` suffix detection, expanded override marker checks, hardened `statedd_doctor.py` file reads, added `AGENTS.md` freshness to doctor output, and aligned generated `PROJECT_DNA.yaml` / `PROJECT_ADAPTER.yaml` versions to v4.
+
+## 2026-07-14 - Stateware public naming compatibility
+
+**Type:** terminology_compatibility
+**Status:** COMPLETE
+
+### What changed
+- Adopted Stateware, State-Centric Engineering, and StateSpec in current public
+  workflow documentation.
+- Kept repository paths, `statedd-*` scripts, format/version identifiers,
+  license wording, and historical records unchanged as compatibility surfaces.
+- Added a compatibility boundary document and structured terminology state.
+
+### Verification
+- Diff hygiene, structured YAML parsing, and the compatibility occurrence audit
+  were run from the isolated naming branch; exact results are recorded in the
+  matching evidence-log entry.

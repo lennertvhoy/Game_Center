@@ -1,6 +1,6 @@
 # Game_Center Status
 
-**Updated At:** 2026-06-14
+**Updated At:** 2026-07-14
 **Execution Mode:** bootstrap
 **Project State:** bootstrap_initializing
 **Public URL:** not configured
@@ -13,6 +13,8 @@
 - All hygiene checks, initializer tests, and generated-repo smoke tests pass.
 - Project-specific truth still needs to be established.
 - Unknowns remain explicit until proven.
+- Current public workflow terminology is StateSpec; legacy StateDD machine
+  identifiers remain compatible and are not physically renamed in this slice.
 
 ## Immediate Priorities
 
